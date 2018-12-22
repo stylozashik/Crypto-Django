@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<div>
+		<div class="jumbotron">
+		  <h1 class="display-4">WELCOME TO CRYPTO WORLD NETWORK</h1>
+		  <p class="lead">API Base Web APP to generate Blockchain, Crypto currency news and price from around 2000+ sources</p>
+		  <hr class="my-4">
+		  <a class="btn btn-success btn-md" href="#" role="button">Learn More...</a>
+		</div>
+	</div>
+
+<table class="table table-bordered table-hover">
+	  <thead>
+	    <tr>
+	      <th scope="col">Name</th>
+	      <th scope="col">Price</th>
+	      <th scope="col">Daily High</th>
+	      <th scope="col">Daily Low</th>
+	      <th scope="col">Market Cap</th>
+	    </tr>
+	  </thead>
+	 <tbody>
+	{% for key,value in price.DISPLAY.items %}
+	<tr>
+		<td>{{ key }}</td>
+		<td>{{ value.USD.HIGHDAY }}</td>
+		<td>{{ value.USD.HIGHDAY }}</td>
+		<td>{{ value.USD.LOWDAY }}</td>
+		<td>{{ value.USD.MKTCAP }}</td>
+	</tr>
+{% endfor %}
+	</tbody>
+</table>
+
+	<div class="container">
+		<div class="row">
+			{% for x in api.Data %}
+				<div class="col-md">
+					<div class="card" style="width: 20rem;">
+					  <img class="card-img-top" src="{{ x.imageurl }}" alt="{{ x.source }}">
+					  <div class="card-body">
+						    <h5 class="card-title">{{ x.title }}</h5>
+						    <a href="{{ x.url }}" class="btn btn-secondary">Read More...</a>
+			  		  </div>
+					</div>
+					</br>
+				</div>
+			{% endfor %}	
+			<br></br>
+		</div>
+	</div>
+<nav class="navbar navbar-dark bg-dark">
+  <p>Developed by "Ashikur Rahaman"</p>
+</nav>
+
+{% endblock %}
+
+
